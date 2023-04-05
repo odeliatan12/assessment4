@@ -1,0 +1,27 @@
+<button (click)="goBack()">Back</button>
+<div *ngFor="let r of review">
+    <div>
+        <img src="{{ r.multimedia_src }}" alt="">
+        <h5>
+            {{ r.display_title }} - {{ r.mpaa_rating }}
+        </h5>
+        <h6>
+            {{ r.headline }}
+        </h6>
+        <p>
+            {{ r.summary_short }}
+        </p>
+        <p>
+            {{ r.linkUrl }}
+        </p>
+        <p>
+            {{ r.count }}
+        </p>
+        <a [routerLink]="['/comments', r.display_title]">
+            Comments
+        </a>
+        <br>
+
+    </div>
+
+</div>

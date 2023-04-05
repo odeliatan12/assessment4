@@ -1,0 +1,32 @@
+{{ movieName }}
+<div>
+    <form [formGroup]="form" (ngSubmit)="insertComment()">
+        Name: <input type="text" formControlName="name">
+        <div *ngIf="form.get('name')?.hasError('required')">
+            Please insert name
+        </div>
+        <div *ngIf="form.get('name')?.hasError('min')">
+            Add name with min 3 characters
+        </div>
+        Rating: <input type="number" formControlName="rating">
+        <div *ngIf="form.get('rating')?.hasError('required')">
+            Please add rating
+        </div>
+        <div *ngIf="form.get('rating')?.hasError('min')">
+            rating more than 0
+        </div>
+        <div *ngIf="form.get('rating')?.hasError('max')">
+            rating less than 5
+        </div>
+        Comment: <input type="text" formControlName="comment">
+        <div *ngIf="form.get('comment')?.hasError('required')">
+            Please insert comment
+        </div>
+        <div>
+            <button [disabled]="onFormChange()" type="submit">Submit Post</button>
+        </div>
+        <div>
+            <button (click)="goBack()">Back</button>
+        </div>
+    </form>
+</div>
